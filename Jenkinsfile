@@ -1,8 +1,7 @@
 node('jenkins-agent') {
     stage('Run shell') {
         container('jnlp') {
-        	sh 'cd ..'
-            sh 'ls'
+        	sh 'ls'
             // sh 'cd /cache && mkdir repo && cd repo'
             // git(url: 'https://github.com/abhrav/jenkins-k8s-test')
         }
