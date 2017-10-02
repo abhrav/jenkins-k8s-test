@@ -8,7 +8,7 @@ node('jenkins-agent') {
         container('docker') {
             sh 'while [ ! -d "/cache/done" ]; do sleep 5; done'
             sh 'cd /cache/repo'
-            buildImage(name: 'jenkins-master', path: '.')
+            sh 'docker build .'
         }
     }
 }
