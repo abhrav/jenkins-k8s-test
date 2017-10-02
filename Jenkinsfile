@@ -8,7 +8,8 @@ node('jenkins-agent') {
         container('docker') {
             sh 'while [ ! -d "/cache/done" ]; do sleep 5; done'
             sh 'cd /cache/repo'
-            sh 'docker build .'
+            sh 'docker build -t jenkins-master .'
+            sh 'docker images'
         }
     }
 }
