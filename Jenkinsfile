@@ -1,14 +1,14 @@
 node('jenkins-agent') {
     stage('Run shell') {
         container('jnlp') {
-        	sh 'ls'
-            // sh 'cd /cache && mkdir repo && cd repo'
-            // git(url: 'https://github.com/abhrav/jenkins-k8s-test')
+        	sh 'cd /cache && mkdir repo && cd repo'
+            git(url: 'https://github.com/abhrav/jenkins-k8s-test')
+            sh 'mkdir /cache/done'
         }
         container('docker') {
-            // sh 'while [ ! -d "/cache/repo" ]; do sleep 5; done'
-            // sh 'cd /cache/repo'
-            // sh buildImage(name: 'jenkins-master')
+            sh 'while [ ! -d "/cache/done" ]; do sleep 5; done'
+            sh 'cd /cache/repo'
+            buildImage(name: 'jenkins-master')
         }
     }
 }
