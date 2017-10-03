@@ -6,9 +6,10 @@ node('jenkins-agent') {
         }
         container('docker') {
             sh 'cd /cache/repo'
+            sh 'docker rmi abhrav/jenkins-master'
             sh 'docker build -t abhrav/jenkins-master .'
             sh 'docker login -u abhrav -p qwerty11'
-            sh 'docker push abhrav/jenkins-master-1'
+            sh 'docker push abhrav/jenkins-master'
         }
     }
 }
