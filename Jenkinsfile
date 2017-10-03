@@ -3,12 +3,11 @@ node('jenkins-agent') {
         container('jnlp') {
         	sh 'cd /cache && mkdir repo && cd repo'
             git(url: 'https://github.com/abhrav/jenkins-k8s-test')
-            sh 'mkdir /cache/done'
         }
         container('docker') {
-            sh 'while [ ! -d "/cache/done" ]; do sleep 5; done'
             sh 'cd /cache/repo'
             sh 'docker build -t jenkins-master-1 .'
+            sh 'docker login -u abhrav --password-stdin'
             sh 'docker push jenkins-master-1'
         }
     }
