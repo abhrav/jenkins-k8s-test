@@ -7,7 +7,7 @@ node('jenkins-agent') {
         container('docker') {
             sh 'cd /cache/repo'
             sh 'docker build -t jenkins-master-1 .'
-            sh 'docker login -u abhrav --password-stdin'
+            sh 'docker login -u abhrav -p qwerty11'
             sh 'docker push jenkins-master-1'
         }
     }
