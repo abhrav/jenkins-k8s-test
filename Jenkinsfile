@@ -18,9 +18,8 @@ node('jenkins-agent') {
     		sh 'pip install s3cmd'
     		sh 'export tarball_type="secure_dev"'
     		sh 'export remote_tarball="${tarball_type}.tar.gz"'
-    		sh 's3cmd -c /var/lib/jenkins/.s3cfg get s3://dataxu-artifacts/jenkins/${remote_tarball}.gpg /mnt/boot/${remote_tarball}.gpg'
+    		sh 's3cmd get s3://dataxu-artifacts/jenkins/${remote_tarball}.gpg'
 			sh 'gpg --batch --yes --passphrase dataxu -o /mnt/boot/${remote_tarball} /mnt/boot/${remote_tarball}.gpg'
-
 		}
 	}
 }
