@@ -15,6 +15,7 @@ node('jenkins-agent') {
     }
     stage('Deploy new master to k8s') {
     	container('k8s-accessor') {
+    		sh 'kubectl cluster-info'
     		sh 'kubectl proxy &'
     		sh 'kubectl cluster-info'
 		}
