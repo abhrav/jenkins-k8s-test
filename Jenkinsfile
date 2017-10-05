@@ -27,6 +27,7 @@ node('jenkins-agent') {
 			sh 'export KOPS_STATE_STORE=s3://k8s-jenkins-useast1_devaws_dataxu_net&&kops export kubecfg k8s-jenkins-useast1.devaws.dataxu.net'
 			sh 'kubectl config view'
 			sh 'kubectl cluster-info'
+			sh 'kubectl cluster-info dump'
 		}
 	}
 }
