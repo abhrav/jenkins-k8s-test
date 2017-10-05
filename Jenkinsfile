@@ -20,6 +20,8 @@ node('jenkins-agent') {
 			sh 'gpg --batch --yes --passphrase dataxu -o secure_dev.tar.gz secure_dev.tar.gz.gpg'
 			sh 'tar xzf secure_dev.tar.gz'
 			sh 'ls secure_dev/'
+			sh 'cat secure_dev/config'
+			sh 'cat secure_dev/awscreds'
 		}
 	}
 }
