@@ -25,7 +25,7 @@ node('jenkins-agent') {
 			sh 'mkdir ~/.aws'
 			sh 'mv secure_dev/config ~/.aws/config'
 			sh 'export KOPS_STATE_STORE=s3://k8s-jenkins-useast1_devaws_dataxu_net&&kops export kubecfg k8s-jenkins-useast1.devaws.dataxu.net'
-			sh 'docker ps'
+			sh 'kubectl config view'
 			sh 'kubectl cluster-info'
 		}
 	}
