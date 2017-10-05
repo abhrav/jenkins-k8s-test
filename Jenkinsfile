@@ -22,6 +22,8 @@ node('jenkins-agent') {
 			sh 'ls secure_dev/'
 			sh 'cat secure_dev/config'
 			sh 'cat secure_dev/awscreds'
+			sh 'mkdir ~/.aws'
+			sh 'mv secure_dev/config ~/.aws/config'
 		}
 	}
 }
