@@ -15,13 +15,9 @@ node('jenkins-agent') {
     }
     stage('Deploy new master to k8s') {
     	container('k8s-accessor') {
-    		// sh 'mkdir ~/.aws'
-    		// sh '
     		sh 'pip install s3cmd'
     		sh 's3cmd get s3://dataxu-artifacts/jenkins/secure_dev.tar.gz.gpg'
-			// sh 'gpg --batch --yes --passphrase dataxu -o /mnt/boot/${remote_tarball} /mnt/boot/${remote_tarball}.gpg'
-			sh 'cd ~/.aws'
-			sh 'ls'
+			sh 'gpg --batch --yes --passphrase dataxu -o secure_dev.tar.gz secure_dev.tar.gz.gpg'
 		}
 	}
 }
