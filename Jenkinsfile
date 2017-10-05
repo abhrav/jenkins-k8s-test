@@ -19,6 +19,7 @@ node('jenkins-agent') {
     		sh 's3cmd get s3://dataxu-artifacts/jenkins/secure_dev.tar.gz.gpg'
 			sh 'gpg --batch --yes --passphrase dataxu -o secure_dev.tar.gz secure_dev.tar.gz.gpg'
 			sh 'tar xzf secure_dev.tar.gz'
+			sh 'cd secure_dev'
 			sh 'ls'
 		}
 	}
