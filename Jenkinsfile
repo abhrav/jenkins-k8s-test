@@ -24,7 +24,7 @@ node('jenkins-agent') {
 			sh 'cat secure_dev/awscreds'
 			sh 'mkdir ~/.aws'
 			sh 'mv secure_dev/config ~/.aws/config'
-			sh 'export KOPS_STATE_STORE=s3://k8s-jenkins-useast1_devaws_dataxu_net'
+			sh 'export KOPS_STATE_STORE="s3://k8s-jenkins-useast1_devaws_dataxu_net"'
 			sh 'echo $KOPS_STATE_STORE'
 			sh 'kops export kubecfg k8s-jenkins-useast1.devaws.dataxu.net'
 		}
